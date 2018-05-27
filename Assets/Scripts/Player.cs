@@ -8,7 +8,8 @@ public class Player : MonoBehaviour {
     // Use this for initialization
     public float speedX = 2.0f;
     public float speedY = 2.0f;
-
+    private bool hasPressedM;
+    private float timer;
 
     //add prefab for the bullet
     public GameObject BulletPrefab;
@@ -41,10 +42,13 @@ public class Player : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.M))
         {
             Mana.MyCurrentValue -= 10;
+            hasPressedM = true;
+            timer = 3f;
         }
-        if(Mana.MyCurrentValue != Mana.MyMaxValue)
+        timer -= Time.deltaTime;
+        if(Mana.MyCurrentValue != Mana.MyMaxValue && timer <=0f)
         {
-            StartCoroutine("regenerateMana(3.0f)");
+            Mana.manaRegeneration();
         }
         
         //if (Input.GetKeyDown(KeyCode.N))
@@ -89,10 +93,5 @@ public class Player : MonoBehaviour {
         bullet.GetComponent<Rigidbody>().velocity = new Vector3(5, 0, 0);
     }    
     
-    public IEnumerator regenerateMana(float delay)
-    {
 
-        yield return new WaitForSeconds(delay);
-        Mana.manaregeneration();
-    }
 }

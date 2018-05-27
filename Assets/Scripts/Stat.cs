@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class Stat : MonoBehaviour {
     private Image content;
     public float lerpSpeed;
+    public float lerpSpeed1;
     private float currentFill;
-    private float maxFill = 1.0f;
+    private float maxFill = 2.0f;
     private float currentValue;
 
     public float MyMaxValue { get; set; }
@@ -56,9 +57,10 @@ public class Stat : MonoBehaviour {
     {
         MyMaxValue = maxValue;
         MyCurrentValue = currentValue;
+       
     }
-    public void manaregeneration()
+    public void manaRegeneration()
     { 
-        content.fillAmount = Mathf.Lerp(content.fillAmount,maxFill , Time.deltaTime * lerpSpeed);
+        content.fillAmount = Mathf.Lerp(content.fillAmount,maxFill , Time.deltaTime * lerpSpeed1);
     }
 }
