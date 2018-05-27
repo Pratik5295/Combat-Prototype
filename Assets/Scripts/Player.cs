@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-
+    [SerializeField]
+    private Stat Mana;
     // Use this for initialization
     public float speedX = 2.0f;
     public float speedY = 2.0f;
@@ -16,12 +17,14 @@ public class Player : MonoBehaviour {
 
 
     void Start () {
-
+        Mana.Initialize(100f, 100f);
         GetComponent<Rigidbody>().freezeRotation = true;
 	}
 	
 	// Update is called once per frame
 	void LateUpdate () {
+
+      
 
         float translationX = Input.GetAxis("Horizontal") * speedX;
         float translationY = Input.GetAxis("Vertical") * speedY;
@@ -32,8 +35,22 @@ public class Player : MonoBehaviour {
         transform.Translate(translationX, 0, 0);
         transform.Translate(0, 0, translationY);
 
-  
-       
+        
+
+        //FOR DEBUGGING ONLY
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            Mana.MyCurrentValue -= 10;
+        }
+        if(Mana.MyCurrentValue != Mana.MyMaxValue)
+        {
+            StartCoroutine("regenerateMana(3.0f)");
+        }
+        
+        //if (Input.GetKeyDown(KeyCode.N))
+        //{
+        //    Mana.MyCurrentValue += 10;
+        //}
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -71,4 +88,11 @@ public class Player : MonoBehaviour {
 
         bullet.GetComponent<Rigidbody>().velocity = new Vector3(5, 0, 0);
     }    
+    
+    public IEnumerator regenerateMana(float delay)
+    {
+
+        yield return new WaitForSeconds(delay);
+        Mana.manaregeneration();
+    }
 }
