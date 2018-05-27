@@ -8,7 +8,7 @@ public class Stat : MonoBehaviour {
     public float lerpSpeed;
     public float lerpSpeed1;
     private float currentFill;
-    private float maxFill = 2.0f;
+    private float maxFill = 10f;
     private float currentValue;
 
     public float MyMaxValue { get; set; }
