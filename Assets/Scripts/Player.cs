@@ -46,9 +46,16 @@ public class Player : MonoBehaviour {
             timer = 3f;
         }
         timer -= Time.deltaTime;
-        if(Mana.MyCurrentValue != Mana.MyMaxValue && timer <=0f)
+        Debug.Log("Current value" + Mana.MyCurrentValue);
+        Debug.Log("Max Value: " + Mana.MyMaxValue);
+        if(timer <=0f)
         {
+            //do
+            //{
+            //    Mana.manaRegeneration();
+            //} while (Mana.MyCurrentValue != Mana.MyMaxValue);
             Mana.manaRegeneration();
+
         }
         
         //if (Input.GetKeyDown(KeyCode.N))

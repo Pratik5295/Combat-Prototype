@@ -8,7 +8,7 @@ public class Stat : MonoBehaviour {
     public float lerpSpeed;
     public float lerpSpeed1;
     private float currentFill;
-    private float maxFill = 10f;
+    private float maxFill = 1f;
     private float currentValue;
 
     public float MyMaxValue { get; set; }
@@ -60,7 +60,12 @@ public class Stat : MonoBehaviour {
        
     }
     public void manaRegeneration()
-    { 
-        content.fillAmount = Mathf.Lerp(content.fillAmount,maxFill , Time.deltaTime * lerpSpeed1);
+    {
+        do
+        {
+            MyCurrentValue += 10;
+            content.fillAmount = Mathf.Lerp(content.fillAmount,content.fillAmount+ 1f, Time.deltaTime * lerpSpeed1);
+        } while (MyCurrentValue != MyMaxValue);
+
     }
 }

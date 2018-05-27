@@ -720,7 +720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpSpeed: 1
-  lerpSpeed1: 0.05
+  lerpSpeed1: 0.001
 --- !u!1001 &2080814757
 Prefab:
   m_ObjectHideFlags: 0
