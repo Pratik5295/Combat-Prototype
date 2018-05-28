@@ -40,7 +40,7 @@ public class Stat : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        MyMaxValue = 100;
+        //MyMaxValue = 100;
         content = GetComponent<Image>();
         
 	}
@@ -65,6 +65,7 @@ public class Stat : MonoBehaviour {
         {
             MyCurrentValue += 10;
             content.fillAmount = Mathf.Lerp(content.fillAmount,content.fillAmount+ 1f, Time.deltaTime * lerpSpeed1);
+            //content.fillAmount += 0.1f;
         } while (MyCurrentValue != MyMaxValue);
 
     }

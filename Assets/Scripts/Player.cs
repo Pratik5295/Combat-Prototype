@@ -8,7 +8,6 @@ public class Player : MonoBehaviour {
     // Use this for initialization
     public float speedX = 2.0f;
     public float speedY = 2.0f;
-    private bool hasPressedM;
     private float timer;
 
     //add prefab for the bullet
@@ -42,7 +41,6 @@ public class Player : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.M))
         {
             Mana.MyCurrentValue -= 10;
-            hasPressedM = true;
             timer = 3f;
         }
         timer -= Time.deltaTime;
@@ -57,7 +55,11 @@ public class Player : MonoBehaviour {
             Mana.manaRegeneration();
 
         }
-        
+        //do
+        //{
+        //    InvokeRepeating("manaRegeneration", 5.0f, 0.5f);
+        //} while (Mana.MyCurrentValue != Mana.MyMaxValue);
+        //InvokeRepeating("manaRegeneration", 5.0f, 0.1f);
         //if (Input.GetKeyDown(KeyCode.N))
         //{
         //    Mana.MyCurrentValue += 10;
@@ -89,7 +91,10 @@ public class Player : MonoBehaviour {
     }
 
 
-    
+    public void manaRegeneration()
+    {
+        Mana.manaRegeneration();
+    }
 
     //Fire Bullet Code
     public void Fire(Transform BulletSpawnPoint)
