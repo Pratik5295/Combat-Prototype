@@ -9,9 +9,10 @@ public class Energy : MonoBehaviour {
     [SerializeField] float pointsperUse = 10f;
     [SerializeField] float currentManaPoints;
     [SerializeField] float manaPointsPerSecond = 0.5f;
+    private float timer;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
         currentManaPoints = maxManaPoints;
 	}
@@ -22,13 +23,18 @@ public class Energy : MonoBehaviour {
         {
             float newManaPoints = currentManaPoints - pointsperUse;
             currentManaPoints = Mathf.Clamp(newManaPoints, 0, maxManaPoints);
+            timer = 3f;
             updateManaBar();
         }
-        if (currentManaPoints < maxManaPoints)
+        timer -= Time.deltaTime;
+
+        if (currentManaPoints < maxManaPoints && timer <= 0f)
         {
             refillManaBar();
             updateManaBar();
         }
+        
+
     }
     public void refillManaBar()
     {
