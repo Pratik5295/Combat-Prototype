@@ -21,4 +21,21 @@ public class Interactable : MonoBehaviour {
         RadialMenuSpawner.ins.SpawnMenu(this);
     }
 
+    void Update()
+    {
+        //Input.GetButton("Tab")
+        //
+        
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            RadialMenuSpawner.ins.SpawnMenu(this);
+            Debug.Log("Tab was pressed");
+        }
+        //else if(Input.GetKeyUp(KeyCode.Tab))
+        //{
+        //    Destroy(RadialMenuSpawner.ins);
+        //    Debug.Log("Tab was released");
+        //}
+    }
 }

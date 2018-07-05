@@ -28,13 +28,18 @@ public class RadialMenu : MonoBehaviour {
 	// Update is called once per frame
     void Update ()
     {
-        if (Input.GetMouseButtonUp(0))
-        { 
-            if(selectedButton)
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (selectedButton)
             {
-                Debug.Log(selectedButton.title + " was selected");  
+                Debug.Log(selectedButton.title + " was selected");
             }
-            Destroy(gameObject);
+        }
+        //if (Input.GetMouseButtonUp(0))
+        if (Input.GetKeyUp(KeyCode.Tab))
+        {
+            
+          Destroy(gameObject);
         }
     }
 }
